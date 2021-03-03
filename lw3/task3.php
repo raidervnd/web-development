@@ -2,33 +2,29 @@
 header("Content-Type: text/plain");
 if ($_GET['password'] !== null)
 {
-    $passwordString = $_GET['password'];
-    if (!preg_match('/^[a-zA-Z0-9]+$/', $passwordString))
+    $strPassword = $_GET['password'];
+    if (!preg_match('/^[a-zA-Z0-9]+$/', $strPassword))
         echo 'Password is invalid!';
     else
     {
-        $len = strlen($passwordString);
+        $len = strlen($strPassword);
         $passwordStrength = 0;
-        $passwordStrength = $passwordStrength + 4 * strlen($passwordString);
-        $passwordStrength = $passwordStrength + 4 * strlen(preg_replace('/[a-zA-Z]/', '', $passwordString));
-        if (preg_match('/[A-Z]+/', $passwordString))
-            $passwordStrength = $passwordStrength + 2 * ($len - strlen(preg_replace('/[a-z0-9]/', '', $passwordString)));
-        if (preg_match('/[a-z]+/', $passwordString))
-            $passwordStrength = $passwordStrength + 2 * ($len - strlen(preg_replace('/[A-Z0-9]/', '', $passwordString)));
-        if ((preg_match('/^[a-zA-Z]+$/', $passwordString)) || (preg_match('/^[0-9]+$/', $passwordString)))
-            $passwordStrength = $passwordStrength - $len;
-        if (preg_match('/(.){1,}/', $passwordString))
-            $passwordStrength = $passwordStrength - ($len - strlen(preg_replace('/(.){1,}/', '', $passwordString)));
-        if (preg_match('/(.).*(.)/', $passwordString))
-            $passwordStrength = $passwordStrength - ;
-
-//        $passwordStrength = $passwordStrength + 
+        $passwordStrength += 4 * strlen($strPassword);
+        $passwordStrength += 4 * strlen(preg_replace('/[a-zA-Z]/', '', $strPassword));
+        if (preg_match('/[A-Z]+/', $strPassword))
+            $passwordStrength += 2 * ($len - strlen(preg_replace('/[a-z0-9]/', '', $strPassword)));
+        if (preg_match('/[a-z]+/', $strPassword))
+            $passwordStrength += 2 * ($len - strlen(preg_replace('/[A-Z0-9]/', '', $strPassword)));
+        if ((preg_match('/^[a-zA-Z]+$/', $strPassword)) || (preg_match('/^[0-9]+$/', $strPassword)))
+            $passwordStrength -= $len;
+        for ($i = 0; $i < strlen($strPassword); $i++)
+        {
+            for ($j = 0; $j < strlen($strPassword); $j++)
+                if (($strPassword[$i] === $strPassword[$j]) && ($i !== $j))
+                    $passwordStrength -= 1;
+        }
         echo "Password Strength: $passwordStrength", "\n";
-
-
-
     }
-
 } 
 else
     echo 'Not found the password parameter';
