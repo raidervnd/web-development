@@ -21,7 +21,7 @@ if ($_GET['password'] !== null)
             for ($j = 0; $j < $len; $j++)
                 if (($strPassword[$i] === $strPassword[$j]) && ($i !== $j))
                     $passwordStrength -= 1;
-        echo "Password Strength: $passwordStrength", "\n";
+        echo "Password Strength: $passwordStrength\n";
     }
 } 
 else
