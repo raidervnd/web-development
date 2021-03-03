@@ -17,12 +17,10 @@ if ($_GET['password'] !== null)
             $passwordStrength += 2 * ($len - strlen(preg_replace('/[A-Z0-9]/', '', $strPassword)));
         if ((preg_match('/^[a-zA-Z]+$/', $strPassword)) || (preg_match('/^[0-9]+$/', $strPassword)))
             $passwordStrength -= $len;
-        for ($i = 0; $i < strlen($strPassword); $i++)
-        {
-            for ($j = 0; $j < strlen($strPassword); $j++)
+        for ($i = 0; $i < $len; $i++)
+            for ($j = 0; $j < $len; $j++)
                 if (($strPassword[$i] === $strPassword[$j]) && ($i !== $j))
                     $passwordStrength -= 1;
-        }
         echo "Password Strength: $passwordStrength", "\n";
     }
 } 
