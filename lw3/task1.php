@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/plain");
-if ($_GET['text'] !== null)
+if (($_GET['text'] !== null) && ($_GET['text'] !== ''))
 {
     $text = $_GET['text'];
     echo $text ."\n";

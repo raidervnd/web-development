@@ -1,11 +1,12 @@
 <?php
 header("Content-Type: text/plain");
-if ($_GET['identifier'] !== null)
+if (($_GET['identifier'] !== null) && ($_GET['identifier'] !== ''))
 {
     $identifier = $_GET['identifier'];
     if (preg_match('/^[a-zA-Z][a-zA-Z0-9]*$/', $identifier))
         echo 'Yes!:)';
-    else {
+    else 
+    {
         echo 'No:( ', "\n";
         if (preg_match('/^[0-9].*$/', $identifier))
             echo "The first symbol is number \n"; 

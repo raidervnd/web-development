@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/plain");
-if ($_GET['password'] !== null)
+if (($_GET['password'] !== null) && ($_GET['password'] !== ''))
 {
     $strPassword = $_GET['password'];
     if (!preg_match('/^[a-zA-Z0-9]+$/', $strPassword))

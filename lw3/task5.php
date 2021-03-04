@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/plain");
-if ($_GET['email'] !== null)
+if (($_GET['email'] !== null) && ($_GET['email'] !== ''))
 {
     $email = $_GET['email'];
     if (file_exists("data/$email.txt"))
