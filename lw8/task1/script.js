@@ -1,12 +1,11 @@
 function isPrimeNumber(number) {
   if (typeof number === 'number') {
-    console.log(isPrime(number));
+    return isPrime(number);
   } else if (typeof number === 'object') {
-    console.log(isPrimeArray(number));
+    return isPrimeArray(number);
   } else {
-    console.log('Bведено не число!');
+    return 'Bведено не число!';
   }
-  return null;
 }
 
 function isPrime(number) {
@@ -21,30 +20,30 @@ function isPrime(number) {
   return number + ' простое число';
 }
 
-function isPrimeArray(number) {
+function isPrimeArray(array) {
   let primeElement;
-  if (number.length === 0) {
+  if (array.length === 0) {
     return number + 'Введенный массив пуст!';
   } else {
-    for (let i = 0; i < number.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       primeElement = true;
-      for (let j = 2; j < number[i]; j++) {
-        if (number[i] % j === 0) {
-          console.log(number[i] + ' непростое число');
+      for (let j = 2; j < array[i]; j++) {
+        if (array[i] % j === 0) {
+          console.log(array[i] + ' непростое число');
           primeElement = false;
           break;      
         }
       } 
-      if (number[i] === 1) {
-        console.log(number[i] + ' непростое число');
+      if (array[i] === 1) {
+        console.log(array[i] + ' непростое число');
         primeElement = false;
       }
-      if (typeof number[i] !== 'number') {
-        console.log(number[i] + ' не число!');
+      if (typeof array[i] !== 'number') {
+        console.log(array[i] + ' не число!');
         primeElement = false;
       }
       if (primeElement) {
-        console.log(number[i] + ' простое число');         
+        console.log(array[i] + ' простое число');         
       }        
     } 
   }
