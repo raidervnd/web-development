@@ -1,10 +1,10 @@
 function calc(string) {
   if (typeof string === 'string') {
-    const sampleString = /\(*\s*[+\-*/]\s+\-*\d+\s+\-*\d+\s*\)*/;
+    const sampleString = /\(*[+\-*/]\s+\-*\d+\s+\-*\d+\)*/;
     let match = string.match(sampleString);
     if (match !== null) {
-      match[0] = match[0].replace(/^\(*\s*/, '');
-      match[0] = match[0].replace(/\s*\)*$/, '');
+      match[0] = match[0].replace(/^\(*/, '');
+      match[0] = match[0].replace(/\)*$/, '');
       console.log(match);
       let arr = match[0].split(" ");
       let operator = arr[0];
