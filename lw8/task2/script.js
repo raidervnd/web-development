@@ -1,6 +1,6 @@
-let resultT = prompt('Введите пример в польской записи');
+let string = prompt('Введите пример в польской записи');
 // alert(confirm('Вы ввели' + resultT));
-calc(resultT);
+calc(string);
 function calc(string) {
   if (typeof string === 'string') {
     const sampleString = /\(*[+\-*/]\s+\-*\d+\s+\-*\d+\)*/;
