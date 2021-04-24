@@ -1,3 +1,6 @@
+let resultT = prompt('Введите пример в польской записи');
+// alert(confirm('Вы ввели' + resultT));
+calc(resultT);
 function calc(string) {
   if (typeof string === 'string') {
     const sampleString = /\(*[+\-*/]\s+\-*\d+\s+\-*\d+\)*/;
@@ -27,14 +30,15 @@ function calc(string) {
       let newString = string.replace(sampleString, result);
       // console.log(newString, ' ,', result);
       if (newString.length === String(result).length) {
-        return result;
+        return alert(string + ' = ' + result);
       } else {
         return calc(newString);
       }
     } else {
-      return 'Cовпадений не найдено или строка введена не верно!';
+      return alert('Cовпадений не найдено или строка введена не верно!');
     }
-  } else {
-    return 'Введите строку';
-  }
+  } 
+  //   else {
+  //   return alert('Введите строку');
+  // }
 }
